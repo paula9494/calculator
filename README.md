@@ -1,0 +1,2 @@
+# yellowpage
+A static page

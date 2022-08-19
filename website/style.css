@@ -1,0 +1,154 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(255, 218, 151);
+  text-align: center;
+}
+
+/*header*/
+
+h1 {
+  font-family: 'Aboreto', sans-serif;
+  font-size: 50px;
+  color: white;
+  border: 3px white solid;
+  width: 300px;
+  text-align: center;
+  padding: 15px;
+}
+
+.headertext {
+  z-index: 1;
+  position: absolute;
+  top: 75px;
+  height: 300px;
+  width: 100%;
+}
+
+.headerimg {
+  background-image: url(https://scx2.b-cdn.net/gfx/news/2019/sunflowers.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  height: 300px;
+  opacity: 0.7;
+  position: relative;
+}
+
+/*text in containers*/
+
+p {
+  font-family: 'Quicksand';
+  font-size: 16px;
+  line-height: 20px;
+  text-align: justify;
+  margin: 0px 20px;
+  padding: 5px;
+}
+
+/*handwriting quotes*/
+
+h2 {
+  font-family: 'Caveat';
+  font-size: 40px;
+  line-height: 45px;
+  text-align: left;
+  margin: 0px 20px;
+}
+
+/*footer txt*/
+
+h3 {
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+}
+
+main {
+  box-sizing: border-box;
+  margin: 0 5%;
+}
+
+/* navigation */
+
+/*containers left*/
+
+.left {
+  display: grid;
+  width: 40%;
+  min-width: 500px;
+
+}
+
+.container1 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 10px;
+  padding: 20px 0px;
+}
+
+.container2 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 10px;
+  padding: 20px 0px;
+}
+
+.container3 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 10px;
+  padding: 20px 0px;
+}
+
+/*quote*/
+
+.quote {
+  box-sizing: border-box;
+  height: auto;
+  color: white;
+  text-shadow: 2px 2px #343f2994;
+  padding: 10px;
+  display: grid;
+}
+
+/*middle container*/
+
+
+
+/*footer*/
+
+/*.dropbtn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown {
+  width: 100%;
+  height: auto;
+}*/

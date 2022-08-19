@@ -61,21 +61,55 @@ h3 {
   font-size: 18px;
   line-height: 20px;
   text-align: center;
+  font-family: 'Quicksand';
 }
 
 main {
-  box-sizing: border-box;
-  margin: 0 5%;
+  display: grid;
+  margin: 1% 0 1% 1%;
+  border-radius: 10px 0 0 10px;
+  background-color: rgb(255, 242, 216);
+  grid-template-areas: "left middle navigation"
+    "left middle navigation"
+    "left middle navigation"
+    "left middle navigation";
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 2fr 2fr 1fr;
 }
 
+
 /* navigation */
+
+.navigation {
+  grid-area: navigation;
+  box-sizing: border-box;
+  /*width: 30%;*/
+  height: auto;
+  background-color: rgba(59, 69, 58, 0.812);
+  color: white;
+  text-align: left;
+  padding: 10px;
+  position: relative;
+  right: 0;
+}
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+li {
+  padding: 5px;
+}
 
 /*containers left*/
 
 .left {
   display: grid;
-  width: 40%;
-  min-width: 500px;
+  grid-area: left;
+  position: relative;
+  /*width: 30%;
+  min-width: 400px;*/
 
 }
 
@@ -85,8 +119,8 @@ main {
   border-style: hidden 1px;
   height: auto;
   background-color: white;
-  margin: 10px;
   padding: 20px 0px;
+  margin: 5%;
 }
 
 .container2 {
@@ -95,8 +129,8 @@ main {
   border-style: hidden 1px;
   height: auto;
   background-color: white;
-  margin: 10px;
   padding: 20px 0px;
+  margin: 5%;
 }
 
 .container3 {
@@ -105,8 +139,8 @@ main {
   border-style: hidden 1px;
   height: auto;
   background-color: white;
-  margin: 10px;
   padding: 20px 0px;
+  margin: 5%;
 }
 
 /*quote*/
@@ -114,19 +148,54 @@ main {
 .quote {
   box-sizing: border-box;
   height: auto;
-  color: white;
-  text-shadow: 2px 2px #343f2994;
-  padding: 10px;
+  color: rgb(0, 0, 0);
+  padding: 20px;
   display: grid;
+  margin: auto;
 }
 
 /*middle container*/
 
+.middle {
+  grid-area: middle;
+  position: relative;
+  /*width: 40%;
+  min-width: 300px;*/
+}
 
+.container4 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 5%;
+  padding: 20px 0px;
+}
+
+.container5 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 5%;
+  padding: 20px 0px;
+}
+
+.container6 {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: hidden 1px;
+  height: auto;
+  background-color: white;
+  margin: 5%;
+  padding: 20px 0px;
+}
 
 /*footer*/
 
-/*.dropbtn {
+.dropbtn {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   width: 100%;
@@ -151,4 +220,6 @@ main {
 .dropdown {
   width: 100%;
   height: auto;
-}*/
+}
+
+*/

@@ -49,9 +49,9 @@ p {
 
 h2 {
   font-family: 'Caveat';
-  font-size: 40px;
+  font-size: 30px;
   line-height: 45px;
-  text-align: left;
+  text-align: center;
   margin: 0px 20px;
 }
 
@@ -69,11 +69,9 @@ main {
   margin: 1% 0 1% 1%;
   border-radius: 10px 0 0 10px;
   background-color: rgb(255, 242, 216);
-  grid-template-areas: "left middle navigation"
-    "left middle navigation"
-    "left middle navigation"
+  grid-template-areas:
     "left middle navigation";
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1 fr;
   grid-template-columns: 2fr 2fr 1fr;
 }
 
@@ -83,7 +81,6 @@ main {
 .navigation {
   grid-area: navigation;
   box-sizing: border-box;
-  /*width: 30%;*/
   height: auto;
   background-color: rgba(59, 69, 58, 0.812);
   color: white;
@@ -92,6 +89,8 @@ main {
   position: relative;
   right: 0;
 }
+
+/* buttons here */
 
 ul {
   text-decoration: none;
@@ -108,50 +107,66 @@ li {
   display: grid;
   grid-area: left;
   position: relative;
-  /*width: 30%;
-  min-width: 400px;*/
-
+  grid-template-areas:
+    "container1"
+    "quote1"
+    "container2"
+    "container3";
+  grid-template-columns: 1fr;
+  grid-template-rows: 4, 1fr;
 }
 
 .container1 {
+  grid-area: container1;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 20px 0px;
   margin: 5%;
 }
 
 .container2 {
+  grid-area: container2;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px 0px;
   margin: 5%;
 }
 
 .container3 {
+  grid-area: container3;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 20px 0px;
   margin: 5%;
 }
 
 /*quote*/
 
-.quote {
+.quote1,
+.quote2 {
   box-sizing: border-box;
   height: auto;
   color: rgb(0, 0, 0);
-  padding: 20px;
-  display: grid;
+  padding: 30px;
   margin: auto;
+  opacity: 0.6;
+}
+
+.quote1 {
+  grid-area: quote1;
+}
+
+.quote2 {
+  grid-area: quote2;
 }
 
 /*middle container*/
@@ -159,36 +174,45 @@ li {
 .middle {
   grid-area: middle;
   position: relative;
-  /*width: 40%;
-  min-width: 300px;*/
+  display: grid;
+  grid-template-areas:
+    "quote2"
+    "container4"
+    "container5"
+    "container6";
+  grid-template-columns: 1fr;
+  grid-template-rows: 4, 1fr;
 }
 
 .container4 {
+  grid-area: container4;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 5%;
   padding: 20px 0px;
 }
 
 .container5 {
+  grid-area: container5;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
   margin: 5%;
   padding: 20px 0px;
 }
 
 .container6 {
+  grid-area: container6;
   box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  border-style: hidden 1px;
   height: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   margin: 5%;
   padding: 20px 0px;
 }

@@ -38,7 +38,8 @@ h1 {
 
 p {
   font-family: 'Quicksand';
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 14px;
   line-height: 20px;
   text-align: justify;
   margin: 0px 20px;
@@ -55,11 +56,10 @@ h2 {
   margin: 0px 20px;
 }
 
-/*footer txt*/
+/*footer, navigation txt*/
 
 h3 {
   font-size: 18px;
-  line-height: 20px;
   text-align: center;
   font-family: 'Quicksand';
 }
@@ -73,6 +73,7 @@ main {
     "left middle navigation";
   grid-template-rows: 1 fr;
   grid-template-columns: 2fr 2fr 1fr;
+  box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, 0.6);
 }
 
 
@@ -88,6 +89,19 @@ main {
   padding: 10px;
   position: relative;
   right: 0;
+}
+
+.navigation a,
+.navigation a:visited {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.793);
+  line-height: 35px;
+  font-weight: 500;
+}
+
+.navigation a:hover {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
 }
 
 /* buttons here */
@@ -122,7 +136,7 @@ li {
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px 0px;
   margin: 5%;
 }
@@ -144,7 +158,7 @@ li {
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px 0px;
   margin: 5%;
 }
@@ -158,7 +172,7 @@ li {
   color: rgb(0, 0, 0);
   padding: 30px;
   margin: auto;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .quote1 {
@@ -201,7 +215,7 @@ li {
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 5%;
   padding: 20px 0px;
 }
@@ -212,34 +226,47 @@ li {
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.8);
   margin: 5%;
   padding: 20px 0px;
 }
 
 /*footer*/
 
-/*.bar {
+.bar {
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 50px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.bar:hover .list {
+  display: block;
 }
 
 .list {
-
-  background-color: red;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.6);
   z-index: 1;
-  position: fixed;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 50px;
+  display: none;
+  height: fit-content;
+  line-height: 30px;
 }
 
-button {
-  background-color: blue;
-  height: 100%;
-  border: 0;
-  margin-bottom: 0;
-  width: 100%;
+.list a,
+.list a:visited {
+  font-weight: 300;
+  color: black;
+  text-decoration: none;
 }
-*/
+
+.list a:hover {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}

@@ -12,47 +12,6 @@ class Calculator {
     this.previousCalcElement = previousCalcElement
     this.currentCalcElement = currentCalcElement
     this.clear()
+    this.clearAll()
   }
-}
-
-clear() {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-clearAll() {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-delete () {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-newNumber(number) {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-chooseOperation(operation) {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-calc() {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
-}
-
-updateDisplay() {
-  this.currentCalc = ''
-  this.previousCalc = ''
-  this.operation = undefined
 }

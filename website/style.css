@@ -1,23 +1,104 @@
-@import url(https://fonts.googleapis.com/css2?family=Varela+Round&display=swap);
+/*@import url(https://fonts.googleapis.com/css2?family=Varela+Round&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap);*/
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans&family=Tilt+Neon&display=swap);
 
 * {
-  --varela: 'Varela', sans-serif;
+  /*--varela: 'Varela', sans-serif;
+  --neon: 'Tilt Neon', sans-serif;*/
+  --noto: 'Noto Sans', sans-serif;
+  --color-1: #ffc0ed;
+  --color-2: #ffffff;
+  --color-3: #ffffff7a;
+  --color-4: #ff9de3;
+  --color-5: #ffd1f2;
+  --color-6: #ff00b729;
+  --color-7: #00000096;
+  --color-8: #000000ca;
+  --shadow: 0.1rem 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.3);
+  --border: 0.1rem solid var(--color-6);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: var(--varela);
   font-weight: normal;
 }
 
 body {
+  font-family: var(--noto);
   margin: 0;
   padding: 0;
   z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 550px;
+  height: 100%;
+}
+
+/*buttons*/
+
+.calculator-grid {
+  font-family: var(--noto);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+  min-height: 60%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: minmax(1.2 fr, auto) repeat(5, 1fr);
+  z-index: 1;
+  padding: 0.5rem;
+  background-color: var(--color-1);
+  border-radius: 0.5rem;
+  border: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.calculator-grid button {
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  border: var(--border);
+  margin: 0.05rem;
+  background-color: var(--color-5);
+  padding: 0.5rem;
+  color: var(--color-2);
+  box-shadow: var(--shadow);
+}
+
+.calculator-grid button:hover {
+  background-color: var(--color-3) !important;
+}
+
+.span-two {
+  color: inherit;
+  grid-column: span 2;
+  background-color: var(--color-4) !important;
+}
+
+/*output*/
+
+.output {
+  grid-column: 1 / -1;
+  background-color: var(--color-2);
+  /*margin order: top sides bottom*/
+  margin: 0.2rem 0.2rem 0.75rem;
+  border-radius: 0.1rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-calc {
+  color: var(--color-7);
+  font-size: 1rem;
+}
+
+.output .current-calc {
+  color: var(--color-8);
+  font-size: 2rem;
 }

@@ -23,10 +23,10 @@
 *::after {
   box-sizing: border-box;
   font-weight: normal;
+  font-family: var(--noto);
 }
 
 body {
-  font-family: var(--noto);
   margin: 0;
   padding: 0;
   z-index: -1;
@@ -40,7 +40,6 @@ body {
 /*buttons*/
 
 .calculator-grid {
-  font-family: var(--noto);
   display: grid;
   justify-content: center;
   align-items: center;
@@ -48,7 +47,7 @@ body {
   min-height: 80%;
   width: 60%;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(1.2 fr, auto) repeat(5, 1fr);
+  grid-template-rows: minmax(1.2fr) repeat(5, 1fr);
   z-index: 1;
   padding: 0.5rem;
   background-color: var(--color-1);
@@ -95,7 +94,7 @@ body {
   word-break: break-all;
 }
 
-.output .data-previous-calc {
+.output .data-prev-calc {
   color: var(--color-2);
   font-size: 1rem;
 }

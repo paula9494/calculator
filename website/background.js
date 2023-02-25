@@ -1,10 +1,13 @@
+/*Later I want to create two dynamic sets of backgrounds and colors, chosen randomly when page is loaded, now they are separated functions*/
+
 /*changing background after refreshing page*/
 
 document.addEventListener("DOMContentLoaded", function (event) {
   function setBackground () {
     const backgrounds = [
-      'url(first-url.jpg)',
-      'url(second-url.jpg)'
+      'url(https://img.freepik.com/free-vector/linear-flat-abstract-lines-pattern_23-2148941500.jpg?w=2000)',
+      'url(https://c0.wallpaperflare.com/preview/408/615/781/candy-lollipop-repetition-repetitive.jpg)',
+      'url(https://us.123rf.com/450wm/tkuzminka/tkuzminka1808/tkuzminka180800046/111655194-cute-seamless-pattern-polka-dot-abstract-ornament-decorated-pink-black-hand-drawn-circles-round.jpg?ver=6)'
     ];
     const backgroundElement = document.body;
 

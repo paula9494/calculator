@@ -12,7 +12,7 @@
   --color-4: #ff9de3;
   --color-5: #ffd1f2;
   --color-6: #ff00b729;
-  --color-7: #00000096;
+  --color-7: #0000006e;
   --color-8: #000000ca;
   --shadow: 0.1rem 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.3);
   --border: 0.1rem solid var(--color-6);
@@ -30,10 +30,11 @@ body {
   margin: 0;
   padding: 0;
   z-index: -1;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
-  background-size: cover;
-  height: 100%;
+  /*background-size: cover;*/
+  min-width: 100%;
+  min-height: 100%;
 }
 
 /*buttons*/
@@ -43,8 +44,9 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin: 10%;
-  min-height: 60%;
+  margin: 10% 20%;
+  min-height: 80%;
+  width: 60%;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: minmax(1.2 fr, auto) repeat(5, 1fr);
   z-index: 1;
@@ -93,12 +95,12 @@ body {
   word-break: break-all;
 }
 
-.output .previous-calc {
-  color: var(--color-7);
+.output .data-previous-calc {
+  color: var(--color-2);
   font-size: 1rem;
 }
 
-.output .current-calc {
+.output .data-current-calc {
   color: var(--color-8);
   font-size: 2rem;
 }

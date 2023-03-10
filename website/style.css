@@ -2,16 +2,17 @@
 @import url(https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap);*/
 @import url(https://fonts.googleapis.com/css2?family=Noto+Sans&family=Tilt+Neon&display=swap);
 
-* {
+*,
+:root {
   /*--varela: 'Varela', sans-serif;
   --neon: 'Tilt Neon', sans-serif;*/
   --noto: 'Noto Sans', sans-serif;
-  --color-1: #ffc0ed;
+  --color-1: #ffb3c5;
   --color-2: #ffffff;
   --color-3: #ffffff7a;
-  --color-4: #ff9de3;
-  --color-5: #ffd1f2;
-  --color-6: #ff00b729;
+  --color-4: #fe98b0;
+  --color-5: #ffc5d3;
+  --color-6: #ff006229;
   --color-7: #0000006e;
   --color-8: #000000ca;
   --shadow: 0.1rem 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.3);

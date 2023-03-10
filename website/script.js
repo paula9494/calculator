@@ -1,3 +1,10 @@
+//to do:
+//÷ replace / sign on calculator
+//double-check string limit
+//change 'white' and 'grey' colors to css variables
+//prevent 0 to be first digit in whole numbers
+//if last characters which are not numbers after clicking "equal" button, they should go to prevCalcDisplay
+
 //buttons
 
 const numberButtons = document.querySelectorAll('[data-number]')
@@ -34,16 +41,16 @@ function limitDisplay () {
 }
 
 function newDigit (digit) {
-  const currentCalcDisplay = document.getElementById('data-current-calc');
+  const currentCalcDisplay = document.getElementById("data-current-calc");
   if (currentCalcDisplay !== null) {
-    if (currentCalcDisplay.textContent === '0') {
-      currentCalcDisplay.textContent = digit;
-    } else {
-      currentCalcDisplay.textContent += digit;
-    }
-    limitDisplay();
-  };
-}
+  }
+  if (currentCalcDisplay.textContent === "0" && digit !== ".") {
+    currentCalcDisplay.textContent = digit;
+  } else {
+    currentCalcDisplay.textContent += digit;
+  }
+  limitDisplay();
+};
 
 //number buttons
 
@@ -64,10 +71,9 @@ symbolButtons.forEach(button => {
       return;
     } else if (currentCalcDisplay.textContent.slice(-1) === '-') {
       return;
-    } else if (!/[\+\*\/]/.test(currentCalcDisplay.textContent.slice(-1))) {
+    } else if (!/[\+\*\/\.]/.test(currentCalcDisplay.textContent.slice(-1))) {
       newDigit(operator);
     }
-    limitDisplay();
   });
 });
 
@@ -76,35 +82,36 @@ minusButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
   let currentCalcValue = currentCalcDisplay.textContent;
 
-  // Replace null or "0" with "-"
+  //replace null or "0" with "-"
   if (currentCalcValue === null || currentCalcValue === "0") {
     currentCalcDisplay.textContent = "-";
     return;
   }
 
-  const allowed = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "*", "+"];
+  //when "-" is allowed
+  let allowed = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "*", "+"];
 
-  const lastChar = currentCalcValue.slice(-1);
+  let lastChar = currentCalcValue.slice(-1);
   if (allowed.includes(lastChar)) {
     currentCalcValue += "-";
     currentCalcDisplay.textContent = currentCalcValue;
   }
-
-  limitDisplay();
 });
 
-//digits
-//there will be function which reconize digits
-
 //dot button
+
 dotButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
 
-  if (currentCalcDisplay.textContent === '0') {
-    // If the current display is "0", replace it with "0."
-    currentCalcDisplay.textContent = '0.';
-  }
+  //get the current number being entered
+  const numbers = currentCalcDisplay.textContent.split(/[\-\+\*\/]/);
+  const currentNumber = numbers[numbers.length - 1];
 
+  //check if the number already contains a decimal point and the last digit is between 0 and 9
+  if (currentNumber.indexOf('.') === -1 && /[0-9]$/.test(currentNumber)) {
+    //if first is false and second add a decimal point to the end of the number
+    currentCalcDisplay.textContent += '.';
+  }
 });
 
 //clean display
@@ -125,11 +132,16 @@ deleteButton.addEventListener('click', () => {
   } else {
     currentCalcDisplay.textContent = '0';
   }
-  limitDisplay();
 });
 
 //all clear
-acButton.addEventListener('click', () => { defaultDisplay() });
+acButton.addEventListener('click', () => {
+  defaultDisplay()
+  const whiteDisplay = document.querySelector('.output #data-prev-calc');
+  whiteDisplay.style.color = 'white';
+  whiteDisplay.style.setProperty('color', 'white', 'important')
+})
+limitDisplay();
 
 //equal button
 equalsButton.addEventListener('click', () => {
@@ -140,5 +152,10 @@ equalsButton.addEventListener('click', () => {
     const result = eval(currentCalcDisplay.textContent);
     prevCalcDisplay.textContent = currentCalcDisplay.textContent;
     currentCalcDisplay.textContent = result;
+    // }
   }
+
+  const changeDisplay = document.querySelector('.output #data-prev-calc');
+  changeDisplay.style.color = 'grey';
+  changeDisplay.style.setProperty('color', 'grey', 'important');
 });

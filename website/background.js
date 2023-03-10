@@ -5,9 +5,9 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   function setBackground () {
     const backgrounds = [
-      'url(https://img.freepik.com/free-vector/linear-flat-abstract-lines-pattern_23-2148941500.jpg?w=2000)',
-      'url(https://c0.wallpaperflare.com/preview/408/615/781/candy-lollipop-repetition-repetitive.jpg)',
-      'url(https://us.123rf.com/450wm/tkuzminka/tkuzminka1808/tkuzminka180800046/111655194-cute-seamless-pattern-polka-dot-abstract-ornament-decorated-pink-black-hand-drawn-circles-round.jpg?ver=6)'
+      //'url(./img/1.png)',
+      //'url(./img/2.png)',
+      'url(./img/3.png)'
     ];
     const backgroundElement = document.body;
 

@@ -1,62 +1,3 @@
-//calculator class
-
-class Calculator {
-  constructor (previousCalcElement, currentCalcElement) {
-    this.previousCalcElement = previousCalcElement;
-    this.currentCalcElement = currentCalcElement;
-    this.currentCalc = '';
-    this.prevCalc = '';
-    this.operation = undefined;
-  }
-
-  //operations
-
-  //display updates
-  updateDisplay () {
-
-  }
-
-  //cleaning current operation
-  clear () {
-    this.currentCalc = ''
-    this.prevCalc = 'last calculation or 0'
-    this.opperation = undefined
-  }
-
-  //clearnig both display lines
-  clearAll () {
-
-  }
-
-  //deleting
-  delete () {
-
-  }
-
-
-
-  //appending number
-  appendNumber () {
-    console.log(number)
-  }
-
-
-
-  //chosing operation
-  chooseOperation (operation) {
-
-  }
-
-  //computing
-  compute () {
-
-  }
-
-
-
-
-}
-
 /*buttons*/
 
 const numberButtons = document.querySelectorAll('[data-number]')
@@ -68,23 +9,40 @@ const cButton = document.querySelector('[data-c]')
 
 /*display*/
 
-const previousCalcElement = document.querySelector('[data-prev-calc]');
-const currentCalcElement = document.querySelector('[data-current-calc]');
+function defaultDisplay () {
+  const currentCalcDisplay = document.getElementById('data-current-calc');
+  if (currentCalcDisplay !== null) {
+    currentCalcDisplay.textContent = '0';
+  };
+  const prevCalcDisplay = document.getElementById('data-prev-calc');
+  if (prevCalcDisplay !== null) {
+    prevCalcDisplay.textContent = '0';
+  };
+};
 
-//changing previous operation color
-window.addEventListener('load', function () {
-  const outputElement = document.querySelector('.data-prev-calc');
-  outputElement.style.color = 'var(--color-7)';
+defaultDisplay();
+
+function newDigit (digit) {
+  const currentCalcDisplay = document.getElementById('data-current-calc');
+  if (currentCalcDisplay !== null) {
+    if (currentCalcDisplay.textContent === '0') {
+      currentCalcDisplay.textContent = digit;
+    } else {
+      currentCalcDisplay.textContent += digit;
+    }
+  };
 }
-);
-
-const calculator = new Calculator(previousCalcElement, currentCalcElement);
-
-//eventListeners
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
     const number = button.textContent;
-    console.log(number)
+    newDigit(number);
+  });
+});
+
+operationButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const number = button.textContent;
+    newDigit(number);
   });
 });

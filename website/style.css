@@ -94,12 +94,12 @@ body {
   word-break: break-all;
 }
 
-.output .data-prev-calc {
+.output #data-prev-calc {
   color: var(--color-2);
   font-size: 1rem;
 }
 
-.output .data-current-calc {
+.output #data-current-calc {
   color: var(--color-8);
   font-size: 2rem;
 }

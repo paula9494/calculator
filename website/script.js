@@ -5,6 +5,7 @@
 //if last characters which are not numbers after clicking "equal" button - prom
 //to prevCalc should be added result not whole string
 //light and dark mode (depends of time), dynamic
+//after equalsButton is clicked values are not going to lastCharacters
 
 //buttons
 const numberButtons = document.querySelectorAll('[data-number]')
@@ -15,6 +16,9 @@ const equalsButton = document.querySelector('[data-equals]')
 const deleteButton = document.querySelector('[data-delete]')
 const acButton = document.querySelector('[data-ac]')
 const cButton = document.querySelector('[data-c]')
+
+//last values
+let lastCharacters = []; // declare an empty array to store the lastNumbers
 
 //display
 function defaultDisplay () {
@@ -39,54 +43,45 @@ function limitDisplay () {
   }
 }
 
+
 function newDigit (digit) {
   const currentCalcDisplay = document.getElementById("data-current-calc");
-  //replace 0 with whole number
-  if (currentCalcDisplay.textContent === "0" && digit !== ".") {
+  const currentDisplayValue = currentCalcDisplay.textContent;
+
+  if (currentDisplayValue === '0' && digit !== '.') {
     currentCalcDisplay.textContent = digit;
   }
-  //for not whole numbers
   else {
-    currentCalcDisplay.textContent += digit;
+    currentCalcDisplay.textContent = currentDisplayValue + digit;
   }
-  limitDisplay();
-};
+}
 
 //number buttons
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
     const currentCalcDisplay = document.getElementById("data-current-calc");
-    const number = button.textContent;
-    const currentDisplayValue = currentCalcDisplay.textContent;
+    const buttonNumber = button.textContent;
+    const lastNumber = buttonNumber;
+    lastCharacters.push(lastNumber);
 
-    if (number !== '0') {
-      newDigit(number); //for other than 0 numbers
+    if (buttonNumber !== "0") {
+      newDigit(buttonNumber)//digits other than "0"
     }
 
-    else if (number === '0' && (!currentDisplayValue.endsWith("0"))) {
-      newDigit(number);
+    else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] !== "0") {
+      newDigit(buttonNumber) //"0" after whole numbers
     }
-
-    else if (number === '0') {
-      const numbers = currentCalcDisplay.textContent.split(/[\-\+\*\/]/);//split string to numbers
-      const currentNumber = numbers[numbers.length - 1]; //last number in string
-
-      if (currentNumber.endsWith(0) && currentNumber !== '0') {
-        newDigit(number);//for numbers other than "0", ending with this digit
-      }
-      else if (currentNumber.includes('.') && currentNumber.endsWith(0)) {
-        newDigit(number);//for not whole numbers ending with "0"
-      }
-    }
+    else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] === "0") { console.log('there will be more code') }
   });
 });
-
 
 //butons with symbols
 symbolButtons.forEach(button => {
   button.addEventListener('click', () => {
     const currentCalcDisplay = document.getElementById('data-current-calc');
     const operator = button.textContent;
+    const lastOperator = operator;
+    lastCharacters.push(lastOperator);
     if (currentCalcDisplay.textContent === '0') {
       newDigit("0" + operator);
     } else if (currentCalcDisplay.textContent.slice(-1) === '-') {
@@ -99,6 +94,8 @@ symbolButtons.forEach(button => {
 
 //minus button
 minusButton.addEventListener('click', () => {
+  const lastOperator = minusButton.textContent;
+  lastCharacters.push(lastOperator);
   const currentCalcDisplay = document.getElementById('data-current-calc');
   let currentCalcValue = currentCalcDisplay.textContent;
 
@@ -119,6 +116,9 @@ minusButton.addEventListener('click', () => {
 
 //dot button
 dotButton.addEventListener('click', () => {
+  const lastOperator = dotButton.textContent;
+  lastCharacters.push(lastOperator);
+
   const currentCalcDisplay = document.getElementById('data-current-calc');
 
   const numbers = currentCalcDisplay.textContent.split(/[\-\+\*\/]/);
@@ -134,6 +134,7 @@ dotButton.addEventListener('click', () => {
 //clean display
 cButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
+  lastCharacters = [''];
   if (currentCalcDisplay !== null) {
     currentCalcDisplay.textContent = '0';
   }
@@ -142,6 +143,7 @@ cButton.addEventListener('click', () => {
 //delete last digit 
 
 deleteButton.addEventListener('click', () => {
+  lastCharacters = lastCharacters.slice(0, -1);
   const currentCalcDisplay = document.getElementById('data-current-calc');
   if (currentCalcDisplay !== null && currentCalcDisplay.textContent.length > 1) {
     currentCalcDisplay.textContent = currentCalcDisplay.textContent.substring(0, currentCalcDisplay.textContent.length - 1);
@@ -153,6 +155,7 @@ deleteButton.addEventListener('click', () => {
 //all clear
 acButton.addEventListener('click', () => {
   defaultDisplay()
+  lastCharacters = [''];
   const whiteDisplay = document.querySelector('.output #data-prev-calc');
   whiteDisplay.style.color = 'white';
   whiteDisplay.style.setProperty('color', 'white', 'important')
@@ -161,6 +164,7 @@ limitDisplay();
 
 //equal button
 equalsButton.addEventListener('click', () => {
+  lastCharacters = '';
   const currentCalcDisplay = document.getElementById('data-current-calc');
   const prevCalcDisplay = document.getElementById('data-prev-calc');
 
@@ -178,4 +182,5 @@ equalsButton.addEventListener('click', () => {
 // new equation
 
 //if new button is clicked right after equalsButton, currentCalcDisplay is erased and new value appears 
+
 

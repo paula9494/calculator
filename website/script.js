@@ -1,12 +1,12 @@
 //to do:
-//÷ replace / sign on calculator
 //double-check string limit
 //change 'white' and 'grey' colors to css variables
 //prevent 0 to be first digit in whole numbers
-//if last characters which are not numbers after clicking "equal" button, they should go to prevCalcDisplay
+//if last characters which are not numbers after clicking "equal" button - prom
+//to prevCalc should be added result not whole string
+//light and dark mode (depends of time), dynamic
 
 //buttons
-
 const numberButtons = document.querySelectorAll('[data-number]')
 const symbolButtons = document.querySelectorAll('[data-symbol]')
 const dotButton = document.querySelector('[data-dot]')
@@ -17,24 +17,23 @@ const acButton = document.querySelector('[data-ac]')
 const cButton = document.querySelector('[data-c]')
 
 //display
-
 function defaultDisplay () {
   const currentCalcDisplay = document.getElementById('data-current-calc');
   if (currentCalcDisplay !== null) {
-    currentCalcDisplay.textContent = '0';
+    currentCalcDisplay.textContent = '0'; //defalut value on the display
   };
   const prevCalcDisplay = document.getElementById('data-prev-calc');
   if (prevCalcDisplay !== null) {
-    prevCalcDisplay.textContent = '0';
+    prevCalcDisplay.textContent = '0'; //defalut value on the display
   };
 };
 
-defaultDisplay();
+defaultDisplay(); //limit number of displayed elements
 
 //current display
-
 function limitDisplay () {
   const currentCalcDisplay = document.getElementById('data-current-calc');
+  //if number of elements is grater than 30 => extract the first 30 characters of the text content
   if (currentCalcDisplay.textContent.length > 30) {
     currentCalcDisplay.textContent = currentCalcDisplay.textContent.substring(0, 30);
   }
@@ -42,37 +41,58 @@ function limitDisplay () {
 
 function newDigit (digit) {
   const currentCalcDisplay = document.getElementById("data-current-calc");
-  if (currentCalcDisplay !== null) {
-  }
+  //replace 0 with whole number
   if (currentCalcDisplay.textContent === "0" && digit !== ".") {
     currentCalcDisplay.textContent = digit;
-  } else {
+  }
+  //for not whole numbers
+  else {
     currentCalcDisplay.textContent += digit;
   }
   limitDisplay();
 };
 
 //number buttons
-
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
+    const currentCalcDisplay = document.getElementById("data-current-calc");
     const number = button.textContent;
-    newDigit(number);
+    const currentDisplayValue = currentCalcDisplay.textContent;
+
+    if (number !== '0') {
+      newDigit(number); //for other than 0 numbers
+    }
+
+    else if (number === '0' && (!currentDisplayValue.endsWith("0"))) {
+      newDigit(number);
+    }
+
+    else if (number === '0') {
+      const numbers = currentCalcDisplay.textContent.split(/[\-\+\*\/]/);//split string to numbers
+      const currentNumber = numbers[numbers.length - 1]; //last number in string
+
+      if (currentNumber.endsWith(0) && currentNumber !== '0') {
+        newDigit(number);//for numbers other than "0", ending with this digit
+      }
+      else if (currentNumber.includes('.') && currentNumber.endsWith(0)) {
+        newDigit(number);//for not whole numbers ending with "0"
+      }
+    }
   });
 });
 
-//butons with symbols
 
+//butons with symbols
 symbolButtons.forEach(button => {
   button.addEventListener('click', () => {
-    const operator = button.textContent;
     const currentCalcDisplay = document.getElementById('data-current-calc');
+    const operator = button.textContent;
     if (currentCalcDisplay.textContent === '0') {
-      return;
+      newDigit("0" + operator);
     } else if (currentCalcDisplay.textContent.slice(-1) === '-') {
-      return;
+      return; //prevent multiple hyphens being clicked
     } else if (!/[\+\*\/\.]/.test(currentCalcDisplay.textContent.slice(-1))) {
-      newDigit(operator);
+      newDigit(operator); //prevent operators being clicked multiple times in a row
     }
   });
 });
@@ -82,30 +102,27 @@ minusButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
   let currentCalcValue = currentCalcDisplay.textContent;
 
-  //replace null or "0" with "-"
   if (currentCalcValue === null || currentCalcValue === "0") {
     currentCalcDisplay.textContent = "-";
-    return;
+    return;  //replace null or "0" with "-"
   }
 
-  //when "-" is allowed
+  //when "-" is allowed:
   let allowed = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "*", "+"];
 
-  let lastChar = currentCalcValue.slice(-1);
+  let lastChar = currentCalcValue.slice(-1);//stores the last character
   if (allowed.includes(lastChar)) {
     currentCalcValue += "-";
-    currentCalcDisplay.textContent = currentCalcValue;
+    currentCalcDisplay.textContent = currentCalcValue;//let "-" be added to display if it's allowed
   }
 });
 
 //dot button
-
 dotButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
 
-  //get the current number being entered
   const numbers = currentCalcDisplay.textContent.split(/[\-\+\*\/]/);
-  const currentNumber = numbers[numbers.length - 1];
+  const currentNumber = numbers[numbers.length - 1]; //reconizes the current number being entered
 
   //check if the number already contains a decimal point and the last digit is between 0 and 9
   if (currentNumber.indexOf('.') === -1 && /[0-9]$/.test(currentNumber)) {
@@ -115,7 +132,6 @@ dotButton.addEventListener('click', () => {
 });
 
 //clean display
-
 cButton.addEventListener('click', () => {
   const currentCalcDisplay = document.getElementById('data-current-calc');
   if (currentCalcDisplay !== null) {
@@ -150,12 +166,16 @@ equalsButton.addEventListener('click', () => {
 
   if (currentCalcDisplay !== null) {
     const result = eval(currentCalcDisplay.textContent);
-    prevCalcDisplay.textContent = currentCalcDisplay.textContent;
+    prevCalcDisplay.textContent = result;
     currentCalcDisplay.textContent = result;
-    // }
   }
 
   const changeDisplay = document.querySelector('.output #data-prev-calc');
   changeDisplay.style.color = 'grey';
   changeDisplay.style.setProperty('color', 'grey', 'important');
 });
+
+// new equation
+
+//if new button is clicked right after equalsButton, currentCalcDisplay is erased and new value appears 
+

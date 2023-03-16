@@ -20,6 +20,12 @@ const cButton = document.querySelector('[data-c]')
 //last values
 let lastCharacters = []; // declare an empty array to store the lastNumbers
 
+//functions
+function between (character, min, max) {
+  console.log('works')
+  return character > min && character <= max
+};
+
 //display
 function defaultDisplay () {
   const currentCalcDisplay = document.getElementById('data-current-calc');
@@ -59,19 +65,27 @@ function newDigit (digit) {
 //number buttons
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
-    const currentCalcDisplay = document.getElementById("data-current-calc");
+    //const currentCalcDisplay = document.getElementById("data-current-calc");
     const buttonNumber = button.textContent;
     const lastNumber = buttonNumber;
     lastCharacters.push(lastNumber);
+    const lastCharacter = lastCharacters[lastCharacters.length - 1];//last typed character
 
+    console.log(lastCharacter);
+
+    //digits other than "0"
     if (buttonNumber !== "0") {
-      newDigit(buttonNumber)//digits other than "0"
+      newDigit(buttonNumber)
     }
 
-    else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] !== "0") {
-      newDigit(buttonNumber) //"0" after whole numbers
+    //"0" after whole numbers
+    else if (buttonNumber === "0" && between(lastCharacter, 1, 9)) {
+      newDigit('0');
+      console.log('this too')//doesn't work for now
     }
-    else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] === "0") { console.log('there will be more code') }
+
+    //other cases
+    //else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] === "0") { console.log('there will be more code') }
   });
 });
 

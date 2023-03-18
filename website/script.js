@@ -22,7 +22,6 @@ let lastCharacters = []; // declare an empty array to store the lastNumbers
 
 //functions
 function between (character, min, max) {
-  console.log('works')
   return character > min && character <= max
 };
 
@@ -69,9 +68,7 @@ numberButtons.forEach(button => {
     const buttonNumber = button.textContent;
     const lastNumber = buttonNumber;
     lastCharacters.push(lastNumber);
-    const lastCharacter = lastCharacters[lastCharacters.length - 1];//last typed character
-
-    console.log(lastCharacter);
+    const lastCharacter = lastCharacters[lastCharacters.length - 2];//almost last typed character
 
     //digits other than "0"
     if (buttonNumber !== "0") {
@@ -79,13 +76,13 @@ numberButtons.forEach(button => {
     }
 
     //"0" after whole numbers
-    else if (buttonNumber === "0" && between(lastCharacter, 1, 9)) {
-      newDigit('0');
-      console.log('this too')//doesn't work for now
+    else if (buttonNumber === "0" && between(parseInt(lastCharacter), 1, 9)) {
+      newDigit(buttonNumber);
     }
 
     //other cases
-    //else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 1] === "0") { console.log('there will be more code') }
+    else if (buttonNumber === "0" && lastCharacters[lastCharacters.length - 2] === "0") { console.log('there will be more code') };
+
   });
 });
 

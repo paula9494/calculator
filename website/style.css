@@ -104,3 +104,8 @@ body {
   color: var(--color-8);
   font-size: 2rem;
 }
+
+.output #data-prefilled-value {
+  color: var(--color-8);
+  font-size: 2rem;
+}

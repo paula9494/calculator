@@ -1,4 +1,4 @@
-#calculator
+#Calculator
 
 a simple js website with basic calculator 
 
